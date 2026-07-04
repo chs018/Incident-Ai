@@ -26,6 +26,18 @@ In modern cloud engineering, when a P0 outage strikes at 3:00 AM, traditional in
 
 ---
 
+## 🏛️ System Architecture & Layer Alignment
+
+CascadeFlow AI is architected into **4 distinct enterprise tiers**:
+* **🎨 Frontend Layer (`app/`, `components/`, `features/`):** Next.js 15 presentation, glassmorphism UI tokens, and domain modules.
+* **⚙️ Backend Layer (`app/api/`, `services/slack/`, `services/sentry/`):** Serverless REST endpoints, webhook ingestion, and third-party observability integrations.
+* **🧠 AI & Neural Inference Layer (`services/ai/`, `services/memory/`, `services/cascadeflow/`):** Groq LPU client (>300 tokens/sec), Hindsight Vector RAG engine, and dynamic model router.
+* **🗄️ Database & Persistence Layer (`supabase/`, `lib/supabase/`):** PostgreSQL schema, RLS policies, and `pgvector` embeddings.
+
+👉 **[Read the complete Architecture & Layer Alignment Guide (ARCHITECTURE.md)](file:///c:/HackwithChennai/ai-incident-commander/ARCHITECTURE.md)** for detailed ASCII diagrams, module workflows, and security governance.
+
+---
+
 ## 🛠️ Tech Stack
 
 * **Framework:** [Next.js 15](https://nextjs.org) (App Router, TypeScript, React Server Components)
@@ -41,7 +53,7 @@ In modern cloud engineering, when a P0 outage strikes at 3:00 AM, traditional in
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/cascadeflow-ai.git
+git clone https://github.com/chs018/cascadeflow-ai.git
 cd cascadeflow-ai
 ```
 

@@ -1,0 +1,365 @@
+/* ─── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
+
+
+/* ─── Design Tokens (CSS Custom Properties) ────────────────── */
+:root {
+  /* LIGHT MODE (Beige & Blue Default) */
+  /* Background layers */
+  --bg-base: #FDFBF7; /* Soft Beige */
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #F8FAFC;
+  --bg-overlay: #F1F5F9;
+  --bg-muted: #E2E8F0;
+
+  /* Tailwind CSS v4 Global Color Overrides for Auto-Invert */
+  --color-slate-950: #FDFBF7; /* Base Background */
+  --color-slate-900: #FFFFFF; /* Surface Cards */
+  --color-slate-800: #E2E8F0; /* Borders */
+  --color-slate-700: #CBD5E1; 
+  --color-slate-400: #000000; /* Text */
+  --color-slate-300: #000000; /* Text */
+  --color-slate-200: #000000; /* Text */
+  --color-slate-100: #000000; /* Text */
+  --color-slate-50: #000000; /* Text */
+  --color-white: #000000; /* Invert white text to black */
+  --color-black: #FFFFFF; /* Invert black backgrounds to white */
+
+  /* Glass effect */
+  --glass-bg: rgba(253, 251, 247, 0.95); /* Yellowish white / Beige */
+  --glass-border: rgba(59, 130, 246, 0.15); /* Blue-tinted border */
+  --glass-hover: rgba(59, 130, 246, 0.25);
+
+  /* Primary — Electric Blue */
+  --primary-50: #EFF6FF;
+  --primary-100: #DBEAFE;
+  --primary-400: #60A5FA;
+  --primary-500: #3B82F6;
+  --primary-600: #2563EB;
+  --primary-glow: rgba(59, 130, 246, 0.2);
+
+  /* Secondary — Emerald */
+  --emerald-400: #34D399;
+  --emerald-500: #10B981;
+  --emerald-glow: rgba(16, 185, 129, 0.2);
+
+  /* Semantic colors */
+  --critical: #EF4444;
+  --critical-glow: rgba(239, 68, 68, 0.2);
+  --warning: #F59E0B;
+  --warning-glow: rgba(245, 158, 11, 0.2);
+  --info: #8B5CF6;
+  --info-glow: rgba(139, 92, 246, 0.2);
+  --cyan: #06B6D4;
+
+  /* Text */
+  --text-primary: #000000; /* Solid Black */
+  --text-secondary: #000000; /* Solid Black */
+  --text-muted: #111827; /* Near Black */
+  --text-disabled: #374151; /* Dark Gray */
+
+  /* Border */
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --border-default: rgba(15, 23, 42, 0.12);
+  --border-strong: rgba(15, 23, 42, 0.20);
+
+  /* Sidebar */
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 64px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-glow-blue: 0 0 20px rgba(59, 130, 246, 0.15);
+  --shadow-glow-red: 0 0 20px rgba(239, 68, 68, 0.15);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  /* DARK MODE */
+  --bg-base: #060A12;
+  --bg-surface: #0B1120;
+  --bg-elevated: #111827;
+  --bg-overlay: #1A2332;
+  --bg-muted: #1E2A3A;
+
+  /* Tailwind CSS v4 Global Color Overrides (Restore Defaults) */
+  --color-slate-950: #020617;
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-slate-700: #334155;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-200: #e2e8f0;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(148, 163, 184, 0.08);
+  --glass-hover: rgba(148, 163, 184, 0.12);
+
+  --primary-glow: rgba(59, 130, 246, 0.3);
+  --emerald-glow: rgba(16, 185, 129, 0.25);
+  --critical-glow: rgba(239, 68, 68, 0.25);
+  --warning-glow: rgba(245, 158, 11, 0.2);
+  --info-glow: rgba(139, 92, 246, 0.25);
+
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #475569;
+  --text-disabled: #334155;
+
+  --border-subtle: rgba(148, 163, 184, 0.06);
+  --border-default: rgba(148, 163, 184, 0.12);
+  --border-strong: rgba(148, 163, 184, 0.20);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* ─── Base Reset ────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar Styling ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.15);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.3);
+}
+
+/* ─── Typography ────────────────────────────────────────────── */
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ─── Glass Card ────────────────────────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.glass-card:hover {
+  border-color: var(--glass-hover);
+}
+
+/* ─── Gradient Text ─────────────────────────────────────────── */
+.gradient-text-blue {
+  background: linear-gradient(135deg, #60A5FA 0%, #818CF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-emerald {
+  background: linear-gradient(135deg, #34D399 0%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Animated Pulse Dot ────────────────────────────────────── */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+.pulse-dot-red { background: var(--critical); }
+.pulse-dot-red::after { background: var(--critical-glow); }
+
+.pulse-dot-green { background: var(--emerald-500); }
+.pulse-dot-green::after { background: var(--emerald-glow); }
+
+.pulse-dot-amber { background: var(--warning); }
+.pulse-dot-amber::after { background: var(--warning-glow); }
+
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(2); opacity: 0; }
+}
+
+/* ─── Glow Effects ──────────────────────────────────────────── */
+.glow-blue { box-shadow: var(--shadow-glow-blue); }
+.glow-red { box-shadow: var(--shadow-glow-red); }
+
+/* ─── Navigation Active State ───────────────────────────────── */
+.nav-item-active {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(99, 102, 241, 0.1) 100%);
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  color: #60A5FA !important;
+}
+
+/* ─── Metric Number Gradient ────────────────────────────────── */
+.metric-value {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+/* ─── Glass Card ──────────────────────────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Status Badge ──────────────────────────────────────────── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+/* ─── Grid Backgrounds ──────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ─── Page Transition Wrapper ───────────────────────────────── */
+.page-content {
+  min-height: 100vh;
+}
+
+/* ─── Loading Skeleton ──────────────────────────────────────── */
+@keyframes skeleton-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(148, 163, 184, 0.05) 25%,
+    rgba(148, 163, 184, 0.10) 50%,
+    rgba(148, 163, 184, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 2s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ─── Floating Orb Backgrounds ──────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.12;
+}
+
+.orb-blue {
+  background: radial-gradient(circle, #3B82F6, transparent 70%);
+}
+
+.orb-purple {
+  background: radial-gradient(circle, #8B5CF6, transparent 70%);
+}
+
+.orb-emerald {
+  background: radial-gradient(circle, #10B981, transparent 70%);
+}
+
+/* ─── Incident Priority Tags ────────────────────────────────── */
+.priority-p0 { color: #EF4444; }
+.priority-p1 { color: #F97316; }
+.priority-p2 { color: #F59E0B; }
+.priority-p3 { color: #64748B; }
+
+/* ─── Custom Select Dropdown ────────────────────────────────── */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394A3B8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+/* ─── Focus Ring ────────────────────────────────────────────── */
+.focus-ring:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.6);
+  outline-offset: 2px;
+}
+
+/* ─── Animated Counter ──────────────────────────────────────── */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.count-animation {
+  animation: count-up 0.6s ease-out forwards;
+}
+
+/* ─── Sidebar Transition ────────────────────────────────────── */
+.sidebar-transition {
+  transition: width var(--transition-base), transform var(--transition-base);
+}
